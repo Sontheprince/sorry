@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xin Lỗi tmn!</title>
+  <style>
+    body {
+      background-color: #f0f8ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 100px;
+      height: 100vh;
+      position: relative;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+      display: inline-block;
+      z-index: 1;
+      position: relative;
+    }
+    .thank-you {
+      display: none;
+      margin-top: 20px;
+      color: #ff69b4;
+      font-size: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    button {
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #ff4b4b;
+    }
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: pink;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
+      border-radius: 50% 50% 0 0;
+    }
+    .heart::after, .heart::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: pink;
+      position: absolute;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(45deg) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h1 style="color:#ff5e57;">Xin Lỗi tmn!</h1>
+  <p>Chào Trần Minh Nhật cute phô mai que 🧀<br>
+  S xin lỗi tmn nhìu lắm 🥺<br>
+  Tmn tha lỗi cho s nhaaa 💖</p>
+  <button id="forgiveBtn">Chấp nhận lời xin lỗi? 🥰</button>
+  <p class="thank-you" id="thankYouMsg">Yêu tmn nhìu lắmm 💖💖💖 Cảm ơn tmn đã tha thứ cho s 🥹</p>
+</div>
+
+<script>
+  document.getElementById('forgiveBtn').addEventListener('click', function() {
+    document.getElementById('thankYouMsg').style.display = 'block';
+    
+    // Thả tim bay
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+      document.body.appendChild(heart);
+
+      // Xóa tim sau 5s để không bị nặng
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+  });
+</script>
+
+</body>
+</html>
